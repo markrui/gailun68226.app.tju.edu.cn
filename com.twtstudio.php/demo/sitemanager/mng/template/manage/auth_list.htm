@@ -1,0 +1,80 @@
+<!--{template header}-->
+<!--{template menu}-->
+<table class="table">
+	<thead>
+		<tr>
+			<th>性质</th>
+			<th>
+				<a href="$baseurl&orderby=owner&rev=1">所有者</a>
+			</th>
+			<th>
+				<a href="$baseurl&orderby=domain&rev=1">作用域</a>
+			</th>
+			<th>
+				<a href="$baseurl&orderby=auth&rev=1">权限</a>
+			</th>
+			<th>
+				<a href="$baseurl&orderby=grantat&rev=1">
+				操作记录
+				</a>
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $list $i $v}-->
+		<tr class="<!--{eval echo $v['iscancel']?'warning':'';}-->">
+			<!--{if $v[ownertype]=='user'}-->
+			<td>用户</td>
+			<td>
+				<a title="$v['owner']['username']" href="../space.php?id=$v['owner']['uid']">
+					$v['owner']['realname']($v['ownerid'])
+				</a>
+			</td>
+			<!--{else}-->
+			<td>$v['ownertype']</td>
+			<td>$v['ownerid']</td>
+			<!--{/if}-->
+			<td>$v['domain']($v['did'])</td>
+			<td>$v['auth']($v['level'])</td>
+			<td>$v['grant'][realname]($v['grantby'])&nbsp;<small>&lt;$v['grantat']&gt;</small></td>
+			<td>
+				<!--{if $v['iscancel']}-->
+				<a class="btn btn-small btn-success" 
+					href="./?page=auth&do=list" 
+					data="{aid:$v[aid],ownertype:'$v[ownertype]',ownerid:'$v[ownerid]',method:'turnon'}"
+					onclick="return ui.form.post(this)">点击恢复</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-danger" 
+					href="./?page=auth&do=list" 
+					data="{aid:$v[aid],ownertype:'$v[ownertype]',ownerid:'$v[ownerid]',method:'turnoff'}"
+					onclick="return ui.form.post(this);">点击禁用</a>
+				<!--{/if}-->
+				<a class="btn btn-small btn-inverse" 
+					href="./?page=auth&do=list" 
+					data="{aid:$v[aid],ownertype:'$v[ownertype]',ownerid:'$v[ownerid]',method:'delete'}"
+					onclick="return ui.form.post(this);">删除</a>
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan=6>
+				<!--{template pagination}-->
+				<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+					<button type="button" class="btn <!--{eval
+						echo $_GET['nocancel']?'active':''
+					}-->"
+					href="$nowurl&nocancel=<!--{eval 
+						echo $_GET['nocancel']?'0':'1'
+					}-->" 
+					data="{}"
+					onclick="return ui.form.post(this)"
+					>隐藏被禁用的</button>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<!--{template footer}-->

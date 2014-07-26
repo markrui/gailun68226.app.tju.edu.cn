@@ -1,0 +1,19 @@
+<?php
+	class WordEx
+	{
+		static function swap(&$v1,&$v2)
+		{
+			$s=$v1;
+			$v1=$v2;
+			$v2=$s;
+		}
+		static function U2G($word)
+		{
+			return iconv("UTF-8","GB2312//IGNORE",$word);
+		}
+		static function G2U($word)
+		{
+			return iconv("GB2312","UTF-8//IGNORE",$word);
+		}
+	}
+?>

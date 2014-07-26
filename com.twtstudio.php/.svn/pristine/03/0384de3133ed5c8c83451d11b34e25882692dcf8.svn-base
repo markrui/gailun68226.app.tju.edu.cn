@@ -1,0 +1,23 @@
+<?php
+	define('ISDEBUG',1);
+	include(dirname(__FILE__)."/config.inc.php");
+	include(dirname(__FILE__).'/../global.inc.php');
+	$tpl=new TemplateHelper(dirname(__FILE__).'/template',dirname(__FILE__).'/cache');
+	$tpl->nocache(true);
+	
+	$_TPL=array();
+	
+	$_TPL['album']=array(
+		'title'	=>	'专辑名称',
+		'list'	=>	array(
+						123123	=>	'第一首歌',
+						908234	=>	'第二首歌',
+						123490	=>	'第三首歌'
+					)
+	);
+	
+	$_TPL['album']['list'][7788]='新的歌曲';
+
+	
+	include $tpl->prepare('album');
+?>

@@ -1,0 +1,40 @@
+header.debug{
+	background-color: #f77;
+}
+
+header.debug .brand{
+	color:#000;
+	text-shadow: 0 1px 0 #777;
+}
+header.debug > .navbar-inner{
+	background-color: #FAFAFA;
+	background-image: -moz-linear-gradient(top, #ffcccc, #ff7777);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffcccc), to(#ff7777));
+	background-image: -webkit-linear-gradient(top, #ffcccc, #ff7777);
+	background-image: -o-linear-gradient(top, #ffcccc, #ff7777);
+	background-image: linear-gradient(to bottom, #ffcccc, #ff7777);
+	background-repeat: repeat-x;
+	border: 1px solid #D40000;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+#sidenav > li i{
+	float: right;
+	margin-top: 2px;
+	margin-right: -6px;
+	opacity: .25;
+}
+
+#sidenav > li > .nav{
+	margin-left:20px;
+}
+
+footer{
+	border-top:1px dashed #777;
+}

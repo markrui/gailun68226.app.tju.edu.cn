@@ -1,0 +1,44 @@
+<!--{template header}-->
+<!--{template menu}-->
+<table class="table">
+	<tbody>
+		<tr>
+			<td>主站模板缓存</td>
+			<td>
+				<a href="./?page=$page&do=$do" data="{method:'gettplsize'}" method="post" onclick="return ui.form.ajaxFill(this,this);" class="btn">获取大小</a>
+			</td>
+			<td>
+				<a class="btn btn-danger"
+					href="./?page=$page&do=$do" 
+					data="{method:'cleartpl'}"
+					onclick="return ui.form.post(this);">删除缓存</a>
+			</td>
+		</tr>
+		<tr>
+			<td>管理站模板缓存</td>
+			<td>
+				<a href="./?page=$page&do=$do" data="{method:'getmngtplsize'}" method="post" onclick="return ui.form.ajaxFill(this,this);" class="btn">获取大小</a>
+			</td>
+			<td>
+				<a class="btn btn-danger"
+					href="./?page=$page&do=$do" 
+					data="{method:'clearmngtpl'}"
+					onclick="return ui.form.post(this);">删除缓存</a>
+			</td>
+		</tr>
+		<tr>
+			<td>文档预览缓存</td>
+			<td>
+				<a href="./?page=$page&do=$do" data="{method:'getpreviewsize'}" method="post" onclick="return ui.form.ajaxFill(this,this);" class="btn">获取大小</a>
+			</td>
+			<td>
+				<a class="btn btn-danger"
+					href="./?page=$page&do=$do" 
+					data="{method:'clearpreview'}"
+					onclick="return ui.form.post(this);">删除缓存</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<!--{template footer}-->

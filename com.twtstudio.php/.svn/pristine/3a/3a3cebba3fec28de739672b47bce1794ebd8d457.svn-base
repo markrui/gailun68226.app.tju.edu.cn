@@ -1,0 +1,24 @@
+﻿body{
+	font-family: 'Microsoft Yahei',"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	overflow-x:hidden;
+}
+
+.container{
+	width: 1000px;
+	margin: 0 auto ;
+	position: relative ;
+}
+
+.corner{
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.container{
+	width: 1000px;
+	margin:0 auto;
+}
+
+/* base.min.css */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,button,fieldset,img,textarea,p,blockquote,th,td{margin:0;padding:0;border:0;}table{border-collapse:collapse;border-spacing:0;}ol,ul{list-style:none;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}a,input,button,select{outline:none;}.left{float:left;}.right{float:right;}.clearfix{clear:both;overflow:hidden;zoom:1;}.hide{position:absolute;text-indent:-9999em;}

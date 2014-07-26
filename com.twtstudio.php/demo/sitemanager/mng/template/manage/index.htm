@@ -1,0 +1,45 @@
+<!--{template header}-->
+<!--{template menu}-->
+
+<div class="page-header" id="filesummary">
+	<h3>这里是用户后台首页</h3>
+</div>
+<p>
+	<div class="alert">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<strong>Warning!</strong> 
+		默认的后台环境只要登录的账号拥有auth表的 manage 0 ADMIN 权限既可以自动登录，请依据自己程序的需求进行登录以及登录前判断的修改，比如加入保护密码，就算登录了天外天账号获取了AUTH权限，仍然需要输入一个保护密码才可以进入后台等，具体逻辑修改请加在common.php内，并对外部的include/model/user.session.php进行修改，记得增加defined('IN_MNG')&&IN_MNG的判断防止影响到外部用户session的登录
+	</div>
+	可以在source/index.php修改业务逻辑<br/>
+	可以在template/manage/index.htm修改页面模板<br/>
+	标准前端使用bootstrap。可以在此处找到教程
+	<a href="http://twitter.github.com/bootstrap/index.html">http://twitter.github.com/bootstrap/index.html</a>
+	或者中文教程<a href="http://wrongwaycn.github.com/bootstrap/docs/">http://wrongwaycn.github.com/bootstrap/docs/</a>
+</p>
+
+<div class="page-header" id="filesummary">
+	<h3>最近用户提交BUG（Fake）</h3>
+</div>
+<table  class="table table-bordered">
+	<thead>
+		<tr>
+			<th>处理状态</th>
+			<th>用户名</th>
+			<th>内容</th>
+			<th>提交时间</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<!--{loop $bugs $i $v}-->
+		<tr>
+			<td>$v[3]</td>
+			<td>$v[0]</td>
+			<td>$v[1]</td>
+			<td>$v[2]</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
+
+<!--{template footer}-->

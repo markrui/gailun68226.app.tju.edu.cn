@@ -1,0 +1,142 @@
+<!--{template header}-->
+<!--{template menu}-->
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				<a href="$baseurl&orderby=index&rev=1">编号</a>
+			</th>
+			<th >
+				标题
+			</th>
+			<th >
+				<a href="$baseurl&orderby=visitcount&rev=1">访问量</a>
+			</th>
+			<th >
+				<a href="$baseurl&orderby=addat&rev=1">发布人</a>
+			</th>
+			<th >
+				<a href="$baseurl&orderby=istop&rev=1">置顶</a>
+			</th>
+			<th >
+				<a href="$baseurl&orderby=ishide&rev=1">隐藏</a>
+			</th>
+			<th >
+				<a href="$baseurl&orderby=isdelete&rev=1">删除</a>
+			</th>
+			<th >
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $list $i $v}-->
+		<tr class="<!--{eval echo $v['isdelete']?'error':'';}-->
+				   <!--{eval echo $v['istop']?'success':'';}-->">
+			<td>
+				$v[index]
+			</td>
+			<td>
+				<a href="$baseurl&index=$v[index]" title="&lt;{$v[addbyname]}&gt;$v[subject]">
+					{$v[subject]}
+				</a>
+			</td>
+			<td>
+				{$v[visitcount]}
+			</td>
+
+			<td>
+				<a href="$baseurl&uid=$v[addby]" title="$v[user][realname] uid($v[user][uid]) ">$v[user][realname]</a>
+				<small title="$v[addat]"><!--{eval echo date('Y-m-d',strtotime($v[addat]));}--></small>
+			</td>
+			<td>
+				<!--{if !$v[istop]}-->
+				<a class="btn btn-small"
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'top',value:1}"
+					onclick="return ui.form.post(this);">点击置顶</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-error"
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'top',value:0}"
+					onclick="return ui.form.post(this);">已置顶</a>
+				<!--{/if}-->
+			</td>
+			<td>
+				<!--{if !$v[ishide]}-->
+				<a class="btn btn-small btn-success"
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'hide',value:1}"
+					onclick="return ui.form.post(this);">点击隐藏</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-error"
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'hide',value:0}"
+					onclick="return ui.form.post(this);">已隐藏</a>
+				<!--{/if}-->
+			</td>
+			<td>
+				<!--{if !$v[isdelete]}-->
+				<a class="btn btn-small btn-danger" 
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'delete',value:1}"
+					onclick="return ui.form.post(this);">点击删除</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-inverse" 
+					href="./?page=news&do=list" 
+					data="{id:$v[index],method:'delete',value:0}"
+					onclick="return ui.form.post(this);">已删除</a>
+				<!--{/if}-->
+			</td>
+			<td>
+				<a class="btn btn-small btn-success"
+					target="_blank" 
+					href="../news.php?id=$v[index]">
+					打开</a>
+				<span class="btn-group">
+					<a class="btn btn-small" 
+						href="./?page=news&do=edit&index=$v['index']">编辑</a>
+					<a class="btn btn-small  dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="./?page=news&do=list" 
+								data="{id:$v[index],method:'changesubject',subject:window.prompt('新的标题','$v[subject]')}"
+								onclick="return ui.form.post(this)">
+								<i class="icon-pencil"></i> 修改新闻标题
+							</a>
+						</li>
+						<li>
+							<a href="./?page=news&do=edit&index=$v['index']" >
+								<i class="icon-pencil"></i> 编辑正文
+							</a>
+						</li>
+					</ul>
+				</span>
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan=8>
+				<!--{template pagination}-->
+				<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+					<a type="button" class="btn <!--{eval
+						echo $_GET['nohide']?'active':''
+					}-->"
+					href="$nowurl&nohide=<!--{eval 
+						echo $_GET['nohide']?'0':'1'
+					}-->" >只显示可见的</a>
+					<a type="button" class="btn <!--{eval
+						echo $_GET['nodelete']?'active':''
+					}-->"
+					href="$nowurl&nodelete=<!--{eval 
+						echo $_GET['nodelete']?'0':'1'
+					}-->" >隐藏删除的</a>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<!--{template footer}-->

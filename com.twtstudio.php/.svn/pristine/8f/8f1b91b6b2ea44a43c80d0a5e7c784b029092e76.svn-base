@@ -1,0 +1,79 @@
+<?php
+	function base_protect($word,$trimit=true)
+	{
+		if($trimit)
+			$word=trim($word);
+		if (get_magic_quotes_gpc()) 
+		{
+			$word= stripslashes($word);
+		}
+		else
+		{
+			$word= mysql_real_escape_string($word);
+		}
+		return $word;
+	}
+	
+	function base_nulltest(&$val,$default="")
+	{
+		return isset($val)&&!is_null($val)?$val:$default;
+	}
+	
+	function base_escape($str)
+	{
+		$str=str_replace('<','&lt;',$str);
+		$str=str_replace('>','&gt;',$str);
+		$str=str_replace('\n','<br/>',$str);
+		$str=str_replace(' ','&nbsp;',$str);
+		$str=str_replace('\t','&nbsp;&nbsp;&nbsp;&nbsp;',$str);
+		return $str;
+	}
+	
+	global $_BASEGLOBAL;
+	$_BASEGLOBAL=array();
+	
+	function base_global($key,$value=false,$domain=false)
+	{
+		global $_BASEGLOBAL;
+		
+		if($domain)
+			$tpl=&$_BASEGLOBAL[$domain];
+		else
+			$tpl=&$_BASEGLOBAL;
+			
+		//print_r($tpl);
+		$seek=explode('.',$key);
+		$last=false;
+		foreach($seek as $k=>$v)
+		{
+			if($k!=(count($seek)-1))
+			{
+				if(!isset($tpl[$v]))
+				{
+					//echo '+'.$v;
+					$tpl[$v]=array();
+				}
+				$tpl=&$tpl[$v];
+				//echo '>enter '.$v;
+				//print_r($tpl);
+
+			}
+			else
+			{
+				if($value!==false)
+				{
+					$tpl[$v]=$value;
+					//echo '>>set '.$v.'='.$value;
+					//print_r($tpl);
+					return $value;
+				}
+				else
+				{
+					return isset($tpl[$v])?$tpl[$v]:false;
+				}
+			}
+		}
+		return false;		
+	}
+
+?>

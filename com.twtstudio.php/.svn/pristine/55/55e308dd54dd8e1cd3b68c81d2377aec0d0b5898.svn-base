@@ -1,0 +1,86 @@
+<!--{template header}-->
+<!--{template menu}-->
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				<a href="$baseurl&orderby=uid&rev=1">Uid</a>
+			</th>
+			<th>姓名
+			</th>
+			<th>
+				<a href="$baseurl&orderby=loginat&rev=1">登陆记录</a></th>
+			<th>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $list $i $v}-->
+		<tr class="<!--{eval echo !$v['isforbidden']?'':'error';}-->">
+			<td>
+				<a href="../space.php?uid=$v[uid]" title="$v[username]">
+					$v[uid]
+				</a>
+			</td>
+			<td>$v[realname]</td>
+			<td>$v[loginat]&nbsp;<small>&lt;$v['loginip']&gt;</small></td>
+			<td>
+				<span class="btn-group">
+					<a class='btn btn-small  dropdown-toggle'  data-toggle="dropdown" href="#">
+						<i class="icon-warning-sign"></i> 下拉菜单
+						<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li>
+							<a href="./?page=user&do=list" 
+								data="{uid:$v[uid],method:'editstorekbyte',maxstorekbyte:window.prompt('空间大小',$v[maxstorekbyte])}"
+								onclick="return ui.form.post(this)">
+								<i class="icon-pencil"></i> AA
+							</a>
+						</li>
+						<li>
+							<a href="./?page=user&do=list" 
+								data="{uid:$v[uid],method:'editstorekbyte',maxstorekbyte:$v[maxstorekbyte]*2}"
+								onclick="return ui.form.post(this)">
+								<i class="icon-asterisk"></i> BB
+							</a>
+						</li>
+						<li>
+							<a href="./?page=user&do=list" 
+								data="{uid:$v[uid],method:'editstorekbyte',maxstorekbyte:0}"
+								onclick="return ui.form.post(this)">
+								<i class="icon-ban-circle"></i> CC
+							</a>
+						</li>
+					</ul>
+				</span>
+				<!--{if $v['isforbidden']}-->
+				<a class="btn btn-small btn-success" 
+					href="./?page=user&do=list" 
+					data="{uid:$v[uid],method:'turnon'}"
+					onclick="return ui.form.post(this)">点击恢复</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-danger" 
+					href="./?page=user&do=list" 
+					data="{uid:$v[uid],method:'turnoff'}"
+					onclick="return ui.form.post(this);">点击禁用</a>
+				<!--{/if}-->
+				<a class="btn btn-small btn-inverse" 
+					href="./?page=user&do=list" 
+					data="{uid:$v[uid],method:'delete'}"
+					onclick="return ui.form.post(this);">
+					删除</a>
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan=6>
+				<!--{template pagination}-->
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<!--{template footer}-->

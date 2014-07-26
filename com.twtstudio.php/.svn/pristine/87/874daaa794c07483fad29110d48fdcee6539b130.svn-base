@@ -1,0 +1,26 @@
+<?php
+	include(dirname(__FILE__).'/../common.php');
+
+	$kv=array(
+		'flag'		=> 0,
+		'report'	=> array()
+	);
+	$repo=array();
+	$_GET['mod']=base_nulltest($_GET['mod']);
+	//mod数组，若传参mod不在该数组中则弹出错误
+	if(!in_array($_GET['mod'],array('testmod')))
+		$repo[]='mod miss';	
+	else
+	{
+		$kv['mod']=$_GET['mod'];
+		include(dirname(__FILE__).'/model/'.$_GET['mod'].'.php');
+	}
+	//echo 'out';
+	$kv['report']=$repo;
+	//header('Content-type:text/json');
+	if(isset($_GET['silent']))
+	{
+		exit;
+	}
+	echo json_encode($kv);
+?>

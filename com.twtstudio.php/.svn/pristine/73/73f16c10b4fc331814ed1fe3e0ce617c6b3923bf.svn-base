@@ -1,0 +1,40 @@
+<!--{template header}-->
+<!--{template menu}-->
+<form class="form-horizontal" method="GET" action="./">
+	<div class="control-group page-header" >
+		<label class="control-label" ></label>
+		<h3 class="controls">&nbsp;查找新闻</h3>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputIndex">新闻编号</label>
+		<div class="controls">
+			<input type="text" name="index" id="inputIndex" placeholder="index">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputSubject">新闻标题（支持*通配）</label>
+		<div class="controls">
+			<input type="text" name="subject" id="inputSubject" placeholder="subject">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="inputAddbyName">模糊查询编辑</label>
+		<div class="controls">
+			<input type="text" name="addbyname" id="inputAddbyName" placeholder="编辑全称">
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input checked=checked  type="checkbox" name="nodelete" value="1"> 除去删除的新闻
+			</label>
+			<label class="checkbox">
+				<input type="checkbox" name="nohide" value="1"> 除去隐藏的新闻
+			</label>
+			<input type="hidden" name="page" value="$page">
+			<input type="hidden" name="do" value="list">
+			<button type="submit" class="btn">查找</button>
+		</div>
+	</div>
+</form>
+<!--{template footer}-->

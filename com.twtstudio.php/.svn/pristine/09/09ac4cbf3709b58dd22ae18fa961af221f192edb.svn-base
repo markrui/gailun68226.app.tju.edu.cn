@@ -1,0 +1,5 @@
+<?php
+	include(dirname(__FILE__).'/../global.inc.php');
+	$tpl=new TemplateHelper(dirname(__FILE__).'/template',dirname(__FILE__).'/cache');
+	include $tpl->prepare('index');
+?>

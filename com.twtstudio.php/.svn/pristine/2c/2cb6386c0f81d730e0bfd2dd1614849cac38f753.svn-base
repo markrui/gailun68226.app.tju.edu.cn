@@ -1,0 +1,21 @@
+<?php
+	function base_protect($word,$trimit=true)
+	{
+		if($trimit)
+			$word=trim($word);
+		if (get_magic_quotes_gpc()) 
+		{
+			$word= stripslashes($word);
+		}
+		else
+		{
+			$word= mysql_real_escape_string($word);
+		}
+		return $word;
+	}
+	
+	function base_nulltest(&$val,$default="")
+	{
+		return isset($val)&&!is_null($val)?$val:$default;
+	}
+?>

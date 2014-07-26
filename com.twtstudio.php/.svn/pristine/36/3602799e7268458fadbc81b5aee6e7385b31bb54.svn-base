@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>userpage.js</title>
+<link rel="stylesheet" href="../css/global.css"/>
+<link rel="stylesheet" href="../css/doc.css"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/doc.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<div id="header">
+	<h1>userpage.js</h1>
+	<p>userpage为用户页js操作组件的声明文件</p>
+	</div>
+	<h2>Initialize</h2>
+		<p>页面初始化项</p>
+		
+		<h3>jcalender</h3>
+		<p>调用jcalender.js初始化页面内的.jcalendar节点</p>
+		
+		<h3>bookingview</h3>
+		<p>调用B.app.js初始化页面内的.W_bookingview节点</p>
+		
+	<h2>B.userpage.order</h2>
+		<p>用户关于订单的操作组件</p>
+	
+		<h3>B.userpage.order.open</h3>
+		<p>传入&lt;订单code&gt;，ajax获取订单html并弹出</p>
+		
+		<h3>B.userpage.order.accept</h3>
+		<p>传入&lt;订单code&gt;，ajax批准订单并弹出结果</p>
+		
+		<h3>B.userpage.order.reject</h3>
+		<p>传入&lt;订单code&gt;，ajax拒绝订单并弹出结果，一般会引导到拒绝理由表单</p>
+
+		<h3>B.userpage.order.rejectsubmit</h3>
+		<p>传入&lt;表单节点&gt;，调用B.ajaxpopform ajax提交拒绝理由表单并弹出结果</p>
+
+</div>
+</body>
+
+</html>

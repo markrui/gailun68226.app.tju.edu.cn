@@ -1,0 +1,16 @@
+<?php
+	function table($name)
+	{
+		//调用 table('admin') -> 2012twt_admin
+		global $Config;
+		
+		return $Config['fingerprint'].$name;
+	}
+
+	function load_model($modelname)
+	{
+		//想载入sample.func.php内的函数，调用：
+		//load_model('sample.func');
+		@include_once(dirname(__FILE__)."/".$modelname.".php");
+	}
+?>

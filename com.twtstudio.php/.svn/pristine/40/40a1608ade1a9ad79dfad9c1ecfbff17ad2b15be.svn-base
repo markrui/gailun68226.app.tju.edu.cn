@@ -1,0 +1,16 @@
+<?php
+	define('ISDEBUG',1);
+	include(dirname(__FILE__)."/config.inc.php");
+	include(dirname(__FILE__).'/../global.inc.php');
+	$tpl=new TemplateHelper(dirname(__FILE__).'/template',dirname(__FILE__).'/cache');
+	$tpl->nocache(true);
+	
+	$arr=array(
+		'sun'	=>	'page'
+	);
+	$arr['maixx']='买超超';
+	
+	$_GET['key']=base_nulltest($_GET['key']);
+	
+	include $tpl->prepare('index');
+?>

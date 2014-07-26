@@ -1,0 +1,64 @@
+<!--{eval $_TPL['js'][]='ckeditor/ckeditor'}-->
+<!--{template header}-->
+<!--{template menu}-->
+
+<div class="page-header" id="filesummary">
+	<h3>{$pagetitle}新闻</h3>
+</div>
+<form class="form-horizontal" method="post"
+	action="./?page=$page&do=edit">
+	<div class="control-group">
+		<label class="control-label" >新闻标题</label>
+		<div class="controls">
+			<input type="text" name="subject" class="span6" placeholder="新闻标题" value="$news[subject]">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" >发布时间</label>
+		<div class="controls">
+			<input type="text" name="addat" class="span3" placeholder="发布时间" value="$news[addat]">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" >正文</label>
+		<div class="controls">
+			<div class="span11">
+				<textarea id="CKEDITOR_content" name="content" class="span12">{$news[content]}</textarea>
+			</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" >署名</label>
+		<div class="controls">
+			<input type="text" name="addbyname" class="span3" placeholder="署名" value="$news[addbyname]">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" >访问量</label>
+		<div class="controls">
+			<input type="text" name="visitcount" class="span3" placeholder="访问量" value="$news[visitcount]">
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<label class="checkbox">
+				<input type="checkbox" name="istop" value="1"
+					<!--{eval echo $news['istop']?'checked=checked':'';}-->> 置顶
+			</label>
+			<label class="checkbox">
+				<input type="checkbox" name="ishide" value="1"
+					<!--{eval echo $news['ishide']?'checked=checked':'';}-->> 隐藏
+			</label>
+			<label class="checkbox">
+				<input type="checkbox" name="isdelete" value="1"
+					<!--{eval echo $news['isdelete']?'checked=checked':'';}-->> 删除
+			</label>
+			<input type="hidden" name="index" value="$news[index]" />
+			<button type="submit" class="btn">提交</button>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+CKEDITOR.replace( 'CKEDITOR_content' );
+</script>
+<!--{template footer}-->

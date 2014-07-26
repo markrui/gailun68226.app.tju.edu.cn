@@ -1,0 +1,171 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,button,fieldset,img,textarea,p,blockquote,th,td{margin:0;padding:0;border:none;}table{border-collapse:collapse;border-spacing:0;}a,input,button,select{outline:none;}.left{float:left;}.right{float:right;}.clearfix{overflow:hidden;zoom:1;}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, FreeSans, Arial, sans-serif;
+	font-family: Georgia, FreeSerif, Times, serif;
+	font-size: 0.9375em;
+	line-height: 1.4667em;
+	color: #222;
+}
+.wrap {
+    position: relative;
+}
+h1 {
+	margin: 1em 2em .5em;
+}
+a {
+	color: #0050c0;
+	text-decoration: underline;
+}
+a:visited {
+	color: #b950b7;
+	text-decoration: underline;
+}
+a:hover, a:focus {
+	text-decoration: none;
+}
+.notice {
+	display: block;
+	padding: 1em;
+	margin: 1.4667em 0 2.9334em;
+	background: #FFF6BF;
+	color: #514721;
+	border: 1px solid #FFD324;
+}
+.notice p {
+	margin: 0;
+}
+ul.plain {
+	list-style: none;
+}
+abbr {
+	border-bottom: 1px dotted #454545;
+}
+p {
+	margin: 0 0 1.4667em 0;
+	position: relative;
+	text-rendering: optimizeLegibility;
+}
+ol, ul, dl {
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+ol ul, ol ol, ol dl, ul ul, ul ol, ul dl, dl ul, dl ol, dl dl {
+	margin-bottom: 0;
+}
+ol p:first-child, ul p:first-child, dl p:first-child {
+	margin-bottom: 0;
+}
+ul, ol {
+	margin-left: 1em;
+}
+dl dt {
+	position: relative;
+	margin: 1.5em 0 0;
+}
+dl dd {
+	position: relative;
+	margin: 0 1em 0;
+}
+dd + dt.pre {
+	margin-top: 1.6em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Georgia, FreeSerif, Times, serif;
+	color: #000;
+	text-rendering: optimizeLegibility;
+	position: relative;
+}
+h1 {
+	font-size: 2.55em;
+	line-height: 1.375em;
+}
+h2 {
+	font-size: 1.9em;
+	line-height: 1.227em;
+	margin: 0 0 0.5em;
+}
+h3 {
+	font-size: 1.5em;
+	line-height: 1.0909em;
+	margin: 1.5em 0 0.5em;
+}
+h3 + h3 {
+	margin: 0 0 0.5em;
+}
+h4 {
+	font-size: 1.3em;
+	line-height: 1.1282em;
+	margin: 2.2em 0 0.5em;
+}
+h4 + h4 {
+	margin: 0 0 0.5em;
+}
+h3 a, h4 a {
+	font-size: 0.8em;
+	float: right;
+	color: #000;
+	text-decoration: none;
+	opacity: 0.3;
+}
+h5 {
+	font-size: 1.125em;
+	line-height: 1.4em;
+}
+h6 {
+	font-size: 1em;
+	line-height: 1.4667em;
+}
+
+
+.list {
+	position: relative;
+	float: left;
+	width: 150px;
+	margin-left: 10px;
+}
+.toc {
+	position: relative;
+	float: right;
+	width: 200px;
+}
+
+.edit {
+	margin: 0 210px 0 170px;
+}
+
+textarea {
+	font-family: Consolas,Monaco,monospace;
+    font-size: 12px;
+    width: 97%;
+    background: #F9F9F9;
+    outline: none;
+    border: 1px solid #DFDFDF;
+    padding: 3px;
+}
+label {
+	font-size: 16px;
+	margin-right: 2em;
+}
+form p {
+	margin-bottom: .618em;
+}
+input {
+    background: #F9F9F9;
+    outline: none;
+    border: 1px solid #DFDFDF;
+    padding: 5px 6px;
+    font-size: 14px;
+}
+button {
+	border: 1px solid #298CBA;
+	font-weight: bold;
+	color: white;
+	background-color: #21759B;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 13px;
+	padding: 6px 12px;
+	cursor: pointer;
+}

@@ -1,0 +1,20 @@
+<?php
+	DEFINE('CTPVersion',2.3);
+	DEFINE('CTPUpdateAt','2012-12-01');
+	if(DEFINED('ISDEBUG')&&ISDEBUG)
+		error_reporting(E_ALL&&~E_NOTICE);
+	//类引用
+	include_once(dirname(__FILE__)."/info.viila.php.db/global.php");
+	include_once(dirname(__FILE__)."/info.viila.php.dbapp/global.php");
+	include_once(dirname(__FILE__)."/info.viila.php.word/global.php");
+	include_once(dirname(__FILE__)."/info.viila.php.base/global.php");
+	include_once(dirname(__FILE__)."/info.viila.php.browserapp/global.php");
+	
+	if(!DEFINED('SLIM'))
+	{
+		include_once(dirname(__FILE__)."/info.viila.php.ui/global.php");
+		include_once(dirname(__FILE__)."/info.viila.php.addons/global.php");
+		include_once(dirname(__FILE__)."/info.viila.php.math/global.php");
+		include_once(dirname(__FILE__)."/info.viila.php.server/global.php");
+	}
+?>

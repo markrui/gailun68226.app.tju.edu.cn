@@ -1,0 +1,77 @@
+<?php
+	class LogHelper
+	{
+		var $db,$identify;
+		function __construct(&$db)
+		{
+			$this->db=$db;
+			$this->identify=getIp();
+		}
+		
+		function init()
+		{
+			global $IVPConfig;
+		
+			$query="CREATE TABLE `".$IVPConfig['basedatabase']['log']."` ("
+				 ." `index` bigint(20) unsigned NOT NULL auto_increment,"
+				."  `signal` char(20) default NULL,"
+				."  `level` smallint(6) default NULL,"
+				."  `message` text,"
+				."  `identify` char(128) default NULL,"
+				."  `update_time` datetime default NULL,"
+				."  PRIMARY KEY  (`index`)"
+				.") ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";			
+			return $this->db->sql($query);
+		}
+		
+		function message($message)
+		{
+			$this->reg("MSG",0,$message);
+		}
+		
+		function reg($signal,$level,$message)
+		{
+			//global $db;
+			global $IVPConfig;
+			$this->db->conn();
+			$message=$this->db->safe($message);
+			$query="INSERT INTO `".$IVPConfig['basedatabase']['log']."` (`signal`,`level`,`identify`,`message`,`update_time`)"
+				." VALUES ('".$signal."',".$level.",'".$this->identify."','".$message."','".date("Y-m-d H:i:s")."')";
+			$result=$this->db->sql($query);
+			//if(!$result)echo mysql_error();
+		}
+		
+		function rolllog($dbname=false,$before=2)
+		{
+			global $IVPConfig;
+			$this->db->conn();
+			$timebefore_short=date("ymd",strtotime("-".$before." day"));
+			$timebefore=date("Y-m-d",strtotime("-".$before." day"))." 00:00:00";
+			$query="CREATE TABLE ".($dbname?$dbname.".":"").$IVPConfig['basedatabase']['log']."_".$timebefore_short
+				." AS SELECT * FROM ".$IVPConfig['basedatabase']['log']." WHERE `update_time`<'".$timebefore."'";
+			//echo $query;
+			//return false;
+			$result=$this->db->sql($query);
+			if($result)
+			{
+				$query="DELETE FROM ".$IVPConfig['basedatabase']['log']." WHERE `update_time`<'".$timebefore."'";
+				$result=$this->db->sql($query);
+				if($result)
+				{
+					return true;
+				}
+				else
+				{
+					//echo $query;
+					//echo mysql_error();
+				}
+
+			}
+			else
+			{
+				//echo mysql_error();
+			}
+			return false;
+		}
+	}
+?>

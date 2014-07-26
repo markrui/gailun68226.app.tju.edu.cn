@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>配置文件 - 天外天PHP类库文档</title>
+		<link rel="stylesheet" href="assets/style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="assets/sh.css" type="text/css" media="all"/>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>天外天PHP类库文档</h1>
+				<div id="gtoc">
+					<p>
+						<a href="index.html">索引</a> | <a href="all.html">所有项</a>
+					</p>
+				</div>
+				<hr />
+			</div>
+			<div id="toc">
+				<h2>目录</h2>
+				<ul>
+					<li>
+						<a href="#config">配置文件</a>
+						<ul>
+							<li>
+								<a href="#config.version">version</a>
+							</li>
+							<li>
+								<a href="#config.lastupdate">lastupdate</a>
+							</li>
+							<li>
+								<a href="#config.database">database</a>
+							</li>
+							<li>
+								<a href="#config.addons">addons</a>
+								<ul>
+									<li>
+										<a href="#config.addons.json">json</a>
+									</li>
+									<li>
+										<a href="#config.addons.httpdown">httpdown</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<hr />
+			</div>
+			<h2 id="config">配置文件</h2>
+			<p>
+				配置文件由一个数组 <code>$IVPConfig</code> 组成，下面是一个例子
+			</p>
+			<pre><code>$IVPConfig = array (
+	'version'			=>	'1.0',
+	'lastupdate'			=>	'2011-10-07',
+	'database'	=> array(
+		'host'			=>	'',
+		'dbname'		=>	'',
+		'dbuser'		=>	'',
+		'dbpassword'		=>	''
+	),
+	'cookie'	=> array(
+		'prefix'		=>	'TWT_',
+		'hashfix'		=>	'TWTSTD@2011',
+		'duration'		=>	24*3600
+	),
+	'basedatabase'	=> array(
+		'log'			=>	'_log',
+		'record'		=>	'_record',
+		'lock'			=>	'_lock'
+	),
+	'addons'	=> array(
+		'json'			=>	false,
+		'httpdown'		=>	false,
+		'id3tagreader'		=>	false
+	),
+	'cacheswitch'			=>	false,
+);</code></pre>
+			<p>
+				你可以把它放到一个 <code>config.php</code> 文件中，
+				通过 <code>require_once()</code> 或者 <code>include_once()</code> 两个函数来引用它。
+			</p>
+			<h3 id="config.version">
+				version
+				<a href="#config.version">#</a>
+			</h3>
+			<p>
+				<em>version as String</em>
+			</p>
+			<p>
+				引用类库的版本，格式一般为 <code>x.x</code>，一般不需要修改。
+			</p>
+			<h3 id="config.lastupdate">
+				lastupdate
+				<a href="#config.lastupdate">#</a>
+			</h3>
+			<p>
+				<em>lastupdate as String like date</em>
+			</p>
+			<p>
+				更新时间
+			</p>
+			<h3 id="config.database">
+				database
+				<a href="#config.database">#</a>
+			</h3>
+			<p>
+				<em>
+					database as PHPArray
+				</em>
+			</p>
+			<p>
+				数据库连接信息，需填充键名为
+				<code>host</code>、<code>dbname</code>、<code>dbuser</code>、<code>dbpassword</code>
+				键值分别为
+				<em>数据库连接地址</em>、<em>数据库名</em>、<em>数据库用户名</em>、<em>相应密码</em>
+				的项目。
+			</p>
+			<h3 id="config.addons">
+				addons
+				<a href="#config.addons">#</a>
+			</h3>
+			<p>
+				设置一些拓展插件的开关，如
+				<code>json</code> 支持、下载插件 <code>httpdown</code>、读取ID3标签的插件 <code>id3tagreader</code>
+			</p>
+			<h4 id="config.addons.json">
+				json
+				<a href="#config.addons.json">#</a>
+			</h4>
+			<p>
+				JSON相关插件，详情请看 <a href="#">json插件</a> 介绍页。
+			</p>
+			<h4 id="config.addons.httpdown">
+				httpdown
+				<a href="#config.addons.httpdown">#</a>
+			</h4>
+			<p>
+				HTTP下载相关插件，详情请看 <a href="#">httpdown插件</a> 介绍页。
+			</p>
+		</div>
+		<script type="text/javascript" src="assets/init.js"></script>
+	</body>
+</html>

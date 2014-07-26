@@ -1,0 +1,34 @@
+<?php
+	class CacheHelper
+	{
+		function Record()
+		{
+			ob_start();
+		}
+		function Flush()
+		{
+			ob_end_flush();
+		}
+		function End()
+		{
+			ob_end_clean();
+		}
+		function CacheAndFlush($cachepath)
+		{
+			CacheHelper::CacheToFile($cachepath);
+			CacheHelper::Flush();			
+		}
+		function CacheAndEnd($cachepath)
+		{
+			CacheHelper::CacheToFile($cachepath);
+			CacheHelper::End();			
+		}
+		function CacheToFile($cachepath)
+		{
+			$str=ob_get_contents();
+			$f=fopen($cachepath,"w");
+			fwrite($f,$str);
+			fclose($f);
+		}
+	}
+?>

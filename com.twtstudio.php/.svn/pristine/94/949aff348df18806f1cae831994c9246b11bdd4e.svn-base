@@ -1,0 +1,6 @@
+<?php
+	global $obamaconfig;
+	$obamaconfig=array(
+		'hello'	=>	'obama'
+	);
+?>

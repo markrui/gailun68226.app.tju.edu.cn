@@ -1,0 +1,4 @@
+<?php
+	if($IVPConfig['addons']['json'])include(dirname(__FILE__)."/json.php");
+	if($IVPConfig['addons']['httpdown'])include(dirname(__FILE__)."/com.dedecms.httpdown.php");
+?>

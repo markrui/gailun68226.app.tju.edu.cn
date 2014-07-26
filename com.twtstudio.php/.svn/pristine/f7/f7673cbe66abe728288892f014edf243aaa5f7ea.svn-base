@@ -1,0 +1,31 @@
+﻿<pre>
+$IVPConfig= array (
+	'version'		=>	'1.0',
+	'lastupdate'	=>	'2011-10-07',
+	'database'		=>	array(
+		'host'		=>	'',
+		'dbname'	=>	'',
+		'dbuser'	=>	'',
+		'dbpassword'=>	'',
+		'charset'	=>	'UTF8'
+	),
+	'cookie'		=>	array(
+		'prefix'	=>	'TWT_',
+		'hashfix'	=>	'TWTSTD@2011',
+		'duration'	=>	24*3600
+	),
+	'basedatabase'	=>	array(
+		'log'		=>	'_log',
+		'record'	=>	'_record',
+		'lock'		=>	'_lock'
+	),
+	'addons'		=>	array(
+		'json'		=>	false,
+		'httpdown'	=>	false,
+		'id3tagreader'	=>	false,
+		'pagehelper'	=>	false,
+		'uploadhelper'	=>	false
+	),
+	'cacheswitch'	=>	false,
+);
+</pre>

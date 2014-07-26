@@ -1,0 +1,78 @@
+<!--{eval $_TPL['js'][]='ckeditor/ckeditor'}-->
+<!--{template header}-->
+<!--{template menu}-->
+<script type="text/javascript" src="js/Base64Code.js"></script>
+<script type="text/javascript" src="js/Base64-80.js"></script>
+<script type="text/javascript">
+<!--
+function post(URL, PARAMS) {      
+    var temp = document.createElement("form");      
+    temp.action = URL;      
+    temp.method = "post";      
+    temp.style.display = "none";      
+    for (var x in PARAMS) {      
+        var opt = document.createElement("textarea");      
+        opt.name = x;      
+        opt.value = PARAMS[x];      
+        // alert(opt.name)      
+        temp.appendChild(opt);      
+    }      
+    document.body.appendChild(temp);      
+    temp.submit();      
+    return temp;
+}
+
+function encodeContent(){
+	CKEDITOR.tools.callFunction(7,event);
+	var sourceCode = document.getElementsByClassName("cke_source");
+	var content = document.getElementsByName("content");
+	content.item(0).value = encodeBase64(encodeURI(sourceCode.item(0).value));
+	
+	var title = document.getElementsByName("title");
+	title.item(0).value = encodeBase64(encodeURI(title.item(0).value));
+	
+	var index = document.getElementsByName("index").item(0).value;
+	
+	post('./?page=$page&do=edit', {"index": index, "content" :content.item(0).value,"title":title.item(0).value});
+}  
+     
+//调用方法 如      
+//-->
+</script>
+
+<div class="page-header" id="filesummary">
+	<h3>{$pagetitle}新闻</h3>
+</div>
+<form class="form-horizontal" method="post"
+	action="./?page=$page&do=edit">
+	<div class="control-group">
+		<label class="control-label" >新闻标题</label>
+		<div class="controls">
+			<input type="text" name="title" class="span6" placeholder="新闻标题" value="$news[title]">
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" >正文</label>
+		<div class="controls">
+			<div class="span11">
+				<textarea id="CKEDITOR_content" name="content">{$news[content]}</textarea>
+			</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">
+			<input type="hidden" name="index" value="$news[id]" />
+			<input type="button" class="btn" value="提交" onclick="encodeContent()">
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	 CKEDITOR.replace('content',{
+       filebrowserBrowseUrl : 'ckeditor/ckfinder/ckfinder.html',
+       filebrowserImageBrowseUrl : 'ckeditor/ckfinder/ckfinder.html?Type=Images',
+       filebrowserFlashBrowseUrl : 'ckeditor/ckfinder/ckfinder.html?Type=Flash',
+       filebrowserUploadUrl : 'ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+       filebrowserImageUploadUrl : 'ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+       filebrowserFlashUploadUrl : 'ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+     });
+	</script>

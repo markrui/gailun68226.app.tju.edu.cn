@@ -1,0 +1,39 @@
+<!--{template header}-->
+<div class="row-fluid">
+	<div class="hero-unit span8 offset2">
+		<div class="row-fluid">
+			<div class="span6">
+				<h2>后台登录<br/><small>$_TPL[title]</small></h2>
+				<!--{if isset($message)}-->
+				<p>$message</p>
+				<!--{else}-->
+				<p>请使用天外天账号登录，确保账号拥有指定管理权</p>
+				<!--{/if}-->
+			</div>
+			<form class="span5 offset1" method="post" 
+				action="http://www.twt.edu.cn/account/?login"
+				autocomplete="off" spellcheck="false">
+				<fieldset>
+					<label>用户名</label>
+					<input name="twtname" type="text" placeholder="Username">
+					<label>密码</label>
+					<input name="password" type="password" placeholder="Password">
+					<label></label>
+					<!--{eval 
+						$referer=urlencode(
+							'http://'
+							.$_SERVER[HTTP_HOST]
+							.substr($_SERVER[REQUEST_URI],0,strpos($_SERVER[REQUEST_URI].'?','?')));
+						}-->
+					<input type="hidden" name="referer" 
+						value="$referer" /> 
+					<button type="submit" class="btn btn-medium btn-danger">
+						<i class="icon-chevron-right icon-white"></i>
+						登录
+					</button>
+				</fieldset>
+			</form>	
+		</div>
+	</div>
+</div>
+<!--{template footer}-->

@@ -1,0 +1,29 @@
+<?php
+//IPv4转化为十进制
+function IPToDec($ipAddress) {
+	if($ipAddress && $ipAddress != 'Unknown') {
+		$ip = explode('.', $ipAddress, 4);
+    	return $ip ? ($ip[0] * 16777216 + $ip[1] * 65536 + 256 * $ip[2] + $ip[3]) : 0;
+	} else {
+		return 0;
+	}
+}
+
+//十进制转化为IPv4
+function DecToIP($ipAddress)
+{
+	if($ipAddress) {
+		$ip = array(0,0,0,0);
+		foreach($ip as $key => $value) {
+			$ip[$key] = ($ipAddress / pow(256,3-$key)) % 256;
+		}
+		$ipv4 = implode(".", $ip);
+		return $ipv4;  
+	} else {
+		return "0.0.0.0";
+	}
+}
+
+
+//咖啡
+?>

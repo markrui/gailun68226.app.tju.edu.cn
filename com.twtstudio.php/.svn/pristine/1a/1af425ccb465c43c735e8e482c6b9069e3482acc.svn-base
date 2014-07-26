@@ -1,0 +1,37 @@
+<?php
+	class TemplateHelper
+	{
+		static $tpl,$cache;
+		static $name="default";
+		static $tplfix=".t";
+		private $tplpath,$cachepath,$iscached;
+		function __construct($tplpath,$cachepath,$iscached=true)
+		{
+			TemplateHelper::$tpl=$this->tplpath=$tplpath;
+			TemplateHelper::$cache=$this->cachepath=$cachepath;
+			$this->iscached=$iscached;
+		}
+		function prepare($name) 
+		{
+			if(strpos($name,'/')==-1){
+				$tpl = $name;
+			} else {
+				$tpl = "default/$name";
+			}
+			$objfile = $this->cachepath."/".str_replace('/','_',$tpl).TemplateHelper::$tplfix.'.php';
+			if(TemplateHelper::nocache()||!file_exists($objfile)) {
+				include_once(dirname(__FILE__).'/info.viila.php.template.func.php');
+				parse_template($tpl,$this->tplpath,$this->cachepath);
+			}
+			return $objfile;
+		}
+		
+		static $nocacheflag=false;
+		static function nocache($flag=false)
+		{
+			TemplateHelper::$nocacheflag=$flag||TemplateHelper::$nocacheflag;
+			return TemplateHelper::$nocacheflag;
+		}
+
+	}
+?>

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>b.app.js</title>
+<link rel="stylesheet" href="../css/global.css"/>
+<link rel="stylesheet" href="../css/doc.css"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/doc.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<div id="header">
+	<h1>b.app.js</h1>
+	<p>b.app为网页主要js组件的声明文件</p>
+	</div>
+	<h2>B.app.bookingview</h2>
+	<p>
+		bookingview为订单日历的视图渲染模块
+	</p>
+	
+		<h3>B.app.bookingview.config</h3>
+		<p>
+			config用来控制渲染模块的
+		</p>
+		<table>
+			<thead><tr><th>属性</th><th>介绍</th><th>默认值</th></tr></thead>
+			<tbody>
+				<tr>
+					<td>minHeight</td> <td>标尺最小间距</td> <td>40</td>
+				</tr>
+				<tr>
+					<td>density</td> <td>标尺最小时间间隔</td> <td>1</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>B.app.bookingview.addorder</h3>
+		<p>在日历中追加订单</p>
+		<table>
+			<thead><tr><th>传入参数</th><th>类型</th><th>介绍</th></tr></thead>
+			<tbody>
+				<tr><td>obj</td><td>dom</td><td>用来展开日历的dom节点</td></tr>
+				<tr><td>order</td><td><a href="#order">order</a></td><td>订单结构数据</td></tr>
+			</tbody>
+		</table>
+
+		<h3>B.app.bookingview.invalidate</h3>
+		<p>渲染日历</p>
+		<table>
+			<thead><tr><th>传入参数</th><th>类型</th><th>介绍</th></tr></thead>
+			<tbody>
+				<tr><td>obj</td><td>dom</td><td>用来展开日历的dom节点</td></tr>
+			</tbody>
+		</table>
+		
+		<h3>B.app.bookingview.message</h3>
+		<p>在日历视图后追加提示信息（自动消隐）</p>
+		<table>
+			<thead><tr><th>传入参数</th><th>类型</th><th>介绍</th></tr></thead>
+			<tbody>
+				<tr><td>obj</td><td>dom</td><td>用来展开日历的dom节点</td></tr>
+				<tr><td>msg</td><td>text</td><td>消息文本</td></tr>
+				<tr><td>html</td><td>html</td><td>可选，附加的html代码</td></tr>
+			</tbody>
+		</table>
+
+		<h3>B.bookingview</h3>
+		<p>传入jQuery选择器，遍历其中元素之星invalidate渲染表单</p>
+		<p>元素需要具有属性binding={binding}，数据域B.data.{binding}</p>
+	
+	<h2>B.app.poppage</h2>
+		<h3>B.pop</h3>
+		<p>传入html文本填充到poplayer</p>
+		
+		<h3>B.popform</h3>
+		<p>传入<a href="#form">form</a>结构数据，弹出定制表单填充到poplayer</p>
+		
+		<h3>B.closepop</h3>
+		<p>关闭弹出层，一般在弹出层调用的php内就生成调用关闭层的按钮</p>
+<pre>
+&lt;a onclick="B.closepop()"&gt;close&lt;/a&gt;
+</pre>
+		
+		<h3>B.ajaxpopform</h3>
+		<p>将传入的form元素用ajax提交，并将返回结果展示到poplayer中</p>
+		<table>
+			<thead><tr><th>传入参数</th><th>类型</th><th>介绍</th></tr></thead>
+			<tbody>
+				<tr><td>form</td><td>dom</td><td>form表单的dom节点</td></tr>
+				<tr><td>dataType</td><td>text</td><td>form提交返回的数据类型，默认为html<br/>2012.05.23:仅支持html</td></tr>
+			</tbody>
+		</table>
+		
+	<h2>Explanation</h2>
+		
+		<h3>order</h3>
+		<p>订单结构数据</p>
+		<table>
+			<thead><tr><th>属性</th><th>类型</th><th>介绍</th><th>默认值</th></tr></thead>
+			<tbody>
+				<tr><td>code</td> <td>text</td> <td>订单号</td> <td></td></tr>
+				<tr><td>col</td> <td>text</td> <td>所在列</td> <td></td></tr>
+				<tr><td>start</td> <td>float</td> <td>开始时间h</td> <td></td></tr>
+				<tr><td>end</td> <td>float</td> <td>结束时间h</td> <td></td></tr>
+				<tr><td>word</td> <td>text</td> <td>订单相关文本（预订人/部门）</td> <td></td></tr>
+				<tr><td>state</td> <td>text</td> <td>表示当前订单状态，如booked已预订</td> <td></td></tr>
+				<tr><td>quickmenu</td> <td>boolean</td> <td>是否显示控制菜单</td> <td>false</td></tr>
+				<tr><td>isexpand</td> <td>boolean</td> <td>是否默认展开</td> <td>false</td></tr>
+			</tbody>
+		</table>
+		
+		<h3>form</h3>
+		<p>用以构建表单的数据</p>
+		<table>
+			<thead><tr><th>属性</th><th>类型</th><th>介绍</th><th>默认值</th></tr></thead>
+			<tbody>
+				<tr><td>method</td> <td>text</td> <td>GET/POST</td> <td>*</td></tr>
+				<tr><td>action</td> <td>text</td> <td>提交位置<br/>注意当method=get时action内的参数无效，<br/>请使用data/hidden属性填充</td> <td>*</td></tr>
+				<tr><td>title</td> <td>text</td> <td>表单标题</td> <td></td></tr>
+				<tr><td>intro</td> <td>text</td> <td>表单介绍性文本</td> <td></td></tr>
+				<tr><td>data</td> <td>[k:v],[k,[text]]</td> <td>表单填充数据，键值型<br/>[k,[text]]会自动转化为select</td> <td>[]</td></tr>
+				<tr><td>hidden</td> <td>[k:v]</td> <td>表单填充数据，hidden</td> <td>[]</td></tr>
+			</tbody>
+		</table>
+
+</div>
+</body>
+
+</html>

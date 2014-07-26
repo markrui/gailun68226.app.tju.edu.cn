@@ -1,0 +1,13 @@
+<?php
+	include_once(dirname(__FILE__).'/common.php');
+		
+	//load_model('sample.func');
+	//sample_a();
+	
+	//load_model('config/obama');
+	//print_r($obamaconfig);
+	
+	//include $tpl->prepare('index');
+	//若要载入自己的皮肤 用以下代码
+	include $tpl->prepare('theme/index');
+?>

@@ -1,0 +1,30 @@
+﻿$('body').ready(function(){
+	var m=$('<div/>')
+	var u1=$('<ul class=lev1/>');
+	m.append(u1);
+	var uhandle=u1;
+	var lhandle=false;
+	$('h2,h3').each(function(){
+		a=$('<a/>');
+		a.attr({'href':'#'+$(this).text()}).text($(this).text());
+		var li=$('<li/>');
+		if($(this)[0].tagName=='H2')
+		{
+			uhandle=u1;
+		}
+		else
+		{
+			if(uhandle==false)
+			{
+				uhandle=$('<ul class=lev2 />');
+				lhandle.append(uhandle);
+			}
+		}
+		lhandle=li;
+		uhandle.append(lhandle.append(a));
+		if($(this)[0].tagName=='H2')
+			uhandle=false;
+		$(this).append($('<a/>').attr({'name':$(this).text()}));
+	})
+	$('#header').after(m);
+})

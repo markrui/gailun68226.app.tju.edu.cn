@@ -1,0 +1,59 @@
+<!--{template header}-->
+<!--{template menu}-->
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th >
+				标题
+			</th>
+			
+			<th >
+				删除
+			</th>
+			<th >
+			编辑
+			</th>
+			<th >
+				发布时间
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{loop $list $i $v}-->
+		<tr class="">
+			<td>
+				$v[id]
+			</td>
+			<td>
+				<a href="./?page=$page&do=edit&id=$v[id]" title="&lt;{$v[title]}&gt;">
+					{$v[title]}
+				</a>
+			</td>
+			<td>
+				<!--{if !$v[isdelete]}-->
+				<a class="btn btn-small btn-danger" 
+					href="./?page=$page&do=list&id=$v['id']" 
+					data="{id:$v[id],method:'delete',value:1}"
+					onclick="return ui.form.post(this);">点击删除</a>
+				<!--{else}-->
+				<a class="btn btn-small btn-inverse" 
+					href="./?page=$page&do=list" 
+					data="{id:$v[id],method:'delete',value:0}"
+					onclick="return ui.form.post(this);">已删除</a>
+				<!--{/if}-->
+			</td>
+			<td>
+				<a class="btn btn-small btn-success"
+					href="./?page=$page&do=edit&id=$v['id']"
+					onclick="return ui.form.post(this);">点击编辑</a>
+			</td>
+			<td>
+				{$v[date]}
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
